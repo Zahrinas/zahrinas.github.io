@@ -18,15 +18,15 @@
   
   
   <title>Introduction to Modern Cryptography - Notes | Zahringenia</title>
-  <meta name="description" content="主用第二版中文版，并参第三版英文版">
+  <meta name="description" content="by Jonathan Katz &amp; Yehuda Lindell主用第二版中文版，并参第三版英文版">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Introduction to Modern Cryptography - Notes">
 <meta property="og:url" content="https://zahrinas.github.io/2023/10/20/introduction-to-modern-cryptography-notes/index.html">
 <meta property="og:site_name" content="Zahringenia">
-<meta property="og:description" content="主用第二版中文版，并参第三版英文版">
+<meta property="og:description" content="by Jonathan Katz &amp; Yehuda Lindell主用第二版中文版，并参第三版英文版">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-20T05:44:07.000Z">
-<meta property="article:modified_time" content="2023-10-21T08:03:39.335Z">
+<meta property="article:modified_time" content="2023-10-21T16:12:01.717Z">
 <meta property="article:author" content="Arraeus Zarius">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
@@ -317,8 +317,7 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>主用第二版中文版，并参第三版英文版</p>
-<span id="more"></span>
+        <p>by Jonathan Katz &amp; Yehuda Lindell<br>主用第二版中文版，并参第三版英文版<br><span id="more"></span></p>
 <h1 id="1-概论"><a href="#1-概论" class="headerlink" title="1 概论"></a>1 概论</h1><h2 id="1-1-密码学和现代密码学"><a href="#1-1-密码学和现代密码学" class="headerlink" title="1.1 密码学和现代密码学"></a>1.1 密码学和现代密码学</h2><h2 id="1-2-对称密钥加密的基本设置"><a href="#1-2-对称密钥加密的基本设置" class="headerlink" title="1.2 对称密钥加密的基本设置"></a>1.2 对称密钥加密的基本设置</h2><p>对称密钥方法：双方能够用秘密方式共享一个密钥<br>对称密钥方案的三个算法：$Gen()$得到密钥$k$，$Enc_k(m)$得到密文$c$，$Dec_k(c)$得到明文$m$。<br>所有密钥的集合成为密钥空间$\mathbb{K}$，所有合法明文成为明文空间$\mathbb{M}$，从两者可以定义密文空间$\mathbb{C}$。<br>一个加密方案通过定义三个算法和$\mathbb{M}$来完全定义。基本要求：$Dec_k(Enc_k(m))=m$。<br>柯克霍夫原则：所有算法细节都可公开。安全性只依赖于密钥的安全性。<br>攻击场景：唯有密文（最常见）、已知明文（得到部分对应关系）、选择明文（能够从任意输入得到$Enc_k()$的输出）、选择密文（能够从任意输入得到$Dec_k()$的输出）。</p>
 <h2 id="1-3-古典加密术及其密码分析"><a href="#1-3-古典加密术及其密码分析" class="headerlink" title="1.3 古典加密术及其密码分析"></a>1.3 古典加密术及其密码分析</h2><p>对加密方案应用柯克霍夫原则进行分析。<br>凯撒密码和移位密码：密钥空间太小，容易穷举破解。<br>启发：密钥空间充分性原则——密钥空间必须能够抵抗穷举搜索，除非应用场景下消息空间更小。<br>单字母替换：密钥空间大；但保持统计信息，容易分析破解。<br>Vigenere加密：用一个短密钥，对明文中每一小段进行按位移位。<br>其破解。当密钥长度已知显然破解简单。密钥长度可以通过观察重复模式和遍历密钥长度并比对相同位置字符的统计分布得到。<br>启发：复杂性并不意味着安全性。</p>
 <h2 id="1-4-现代密码学的基本原则"><a href="#1-4-现代密码学的基本原则" class="headerlink" title="1.4 现代密码学的基本原则"></a>1.4 现代密码学的基本原则</h2><p>形式化定义是困难的。<br>一个比较完整的定义：攻击者不能从密文中计算关于明文的任何函数（语义和统计规律？）。<br>通用的安全定义：有特定能力的攻击者不能完成特定的攻破。<br>现代研究中常用的规约方法。考虑假设$X$为真，可以构建系统$Y$为安全。通过攻破系统$Y$，可以证明假设$X$不为真。</p>
