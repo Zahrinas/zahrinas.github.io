@@ -38,8 +38,16 @@
     <link href="https://zahrinas.github.io/2023/10/19/shuli-luoji-notes/"/>
     <id>https://zahrinas.github.io/2023/10/19/shuli-luoji-notes/</id>
     <published>2023-10-19T13:36:28.000Z</published>
-    <updated>2023-10-21T08:06:29.298Z</updated>
+    <updated>2023-10-21T15:12:25.411Z</updated>
     
+    <content type="html"><![CDATA[<span id="more"></span><h1 id="0-预备知识"><a href="#0-预备知识" class="headerlink" title="0 预备知识"></a>0 预备知识</h1><h1 id="0-1-集论初等概念"><a href="#0-1-集论初等概念" class="headerlink" title="0.1 集论初等概念"></a>0.1 集论初等概念</h1><p>一些以前不常见到的记号。幂集$\mathcal{P}(A)={a|a \subseteq A}$。积集$A \times B={(a, b)|a \in A, b \in B}$，规定$A^0=\emptyset$。<br>如若$R \subseteq A \times B$，称$R$是$A$到$B$的关系。若$R \subseteq A^n$，称$R$是$A$上的$n$元关系。一元关系即子集。<br>等价类满足自反、对称和传递性。$a$与$b$等价记作$a \sim b$。$a$在某等价关系上形成的等价类记作$[a]$。对$A$上的等价关系$R$，所有$R$等价类的集称为商集，记作$A/R$。<br>对一个映射关系$f:X \rightarrow Y$，若有$(x_0,y_0) \in f$，则$y_0$称为$x_0$的象，反过来称为原象，写作$x_0 \mapsto y_0$或$y_0=f(x_0)$。<br>$f:A^n \rightarrow A$称为$A$上的$n$元运算。</p><h1 id="0-2-Peano自然数公理"><a href="#0-2-Peano自然数公理" class="headerlink" title="0.2 Peano自然数公理"></a>0.2 Peano自然数公理</h1><p>皮亚诺自然数公理：</p><ol><li>$0$是自然数。</li><li>任何自然数有唯一后继。</li><li>任何自然数后继不为$0$。</li><li>不同自然数的后继不同。</li><li>当$0 \in M$，并且$x \in M$时$x$的后继$x’ \in M$，则$M$是自然数集。</li></ol><p>把$0$的后继记为$1$，以此类推，即是一般意义上的自然数集。<br>$f: N^k \rightarrow N$称为$k$元数论函数。<br>已知$k$元数论函数$g$和$k+2$元数论函数$h$，当<script type="math/tex">f(n_1,...,n_k,0)=g(n_1,...,n_k),$$$$f(n_1,...,n_k,n+1)=h(n_1,...,n_k,n,f(n)),</script>此时唯一存在$k+1$元数论函数$f$是递归函数。<br>当$k=0$可做如下定义。已知常数$m$和二元数论函数$h$，当$f(0)=m$，$f(n+1)=h(n,f(n))$，称f是由$m$和$h$递归定义的函数。</p><h1 id="0-3-可数集"><a href="#0-3-可数集" class="headerlink" title="0.3 可数集"></a>0.3 可数集</h1><p>由可数集的元素构造的有序有限元组的集也是可数集。证明考虑映射到素数无穷。</p><h1 id="1-命题逻辑"><a href="#1-命题逻辑" class="headerlink" title="1 命题逻辑"></a>1 命题逻辑</h1><h1 id="1-1-命题联结词与真值表"><a href="#1-1-命题联结词与真值表" class="headerlink" title="1.1 命题联结词与真值表"></a>1.1 命题联结词与真值表</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+&lt;h1 id=&quot;0-预备知识&quot;&gt;&lt;a href=&quot;#0-预备知识&quot; class=&quot;headerlink&quot; title=&quot;0 预备知识&quot;&gt;&lt;/a&gt;0 预备知识&lt;/h1&gt;&lt;h1 id=&quot;0-1-集论初等概念&quot;&gt;&lt;a href=&quot;#0-1</summary>
+      
     
     
     
