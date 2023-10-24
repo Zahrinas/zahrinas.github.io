@@ -6,7 +6,7 @@
   <link href="https://zahrinas.github.io/atom.xml" rel="self"/>
   
   <link href="https://zahrinas.github.io/"/>
-  <updated>2023-10-24T15:50:03.648Z</updated>
+  <updated>2023-10-24T15:54:22.319Z</updated>
   <id>https://zahrinas.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://zahrinas.github.io/2023/10/20/introduction-to-modern-cryptography-notes/"/>
     <id>https://zahrinas.github.io/2023/10/20/introduction-to-modern-cryptography-notes/</id>
     <published>2023-10-20T05:44:07.000Z</published>
-    <updated>2023-10-24T15:50:03.648Z</updated>
+    <updated>2023-10-24T15:54:22.319Z</updated>
     
     <content type="html"><![CDATA[<p>by Jonathan Katz &amp; Yehuda Lindell<br>主用第二版中文版，并参第三版英文版<br><span id="more"></span></p><h1 id="1-概论"><a href="#1-概论" class="headerlink" title="1 概论"></a>1 概论</h1><h2 id="1-1-密码学和现代密码学"><a href="#1-1-密码学和现代密码学" class="headerlink" title="1.1 密码学和现代密码学"></a>1.1 密码学和现代密码学</h2><h2 id="1-2-对称密钥加密的基本设置"><a href="#1-2-对称密钥加密的基本设置" class="headerlink" title="1.2 对称密钥加密的基本设置"></a>1.2 对称密钥加密的基本设置</h2><p>对称密钥方法：双方能够用秘密方式共享一个密钥<br>对称密钥方案的三个算法：$Gen()$得到密钥$k$，$Enc_k(m)$得到密文$c$，$Dec_k(c)$得到明文$m$。<br>所有密钥的集合成为密钥空间$\mathbb{K}$，所有合法明文成为明文空间$\mathbb{M}$，从两者可以定义密文空间$\mathbb{C}$。<br>一个加密方案通过定义三个算法和$\mathbb{M}$来完全定义。基本要求：$Dec_k(Enc_k(m))=m$。<br>柯克霍夫原则：所有算法细节都可公开。安全性只依赖于密钥的安全性。<br>攻击场景：唯有密文（最常见）、已知明文（得到部分对应关系）、选择明文（能够从任意输入得到$Enc_k()$的输出）、选择密文（能够从任意输入得到$Dec_k()$的输出）。</p><h2 id="1-3-古典加密术及其密码分析"><a href="#1-3-古典加密术及其密码分析" class="headerlink" title="1.3 古典加密术及其密码分析"></a>1.3 古典加密术及其密码分析</h2><p>对加密方案应用柯克霍夫原则进行分析。<br>凯撒密码和移位密码：密钥空间太小，容易穷举破解。<br>启发：密钥空间充分性原则——密钥空间必须能够抵抗穷举搜索，除非应用场景下消息空间更小。<br>单字母替换：密钥空间大；但保持统计信息，容易分析破解。<br>Vigenere加密：用一个短密钥，对明文中每一小段进行按位移位。<br>其破解。当密钥长度已知显然破解简单。密钥长度可以通过观察重复模式和遍历密钥长度并比对相同位置字符的统计分布得到。<br>启发：复杂性并不意味着安全性。</p><h2 id="1-4-现代密码学的基本原则"><a href="#1-4-现代密码学的基本原则" class="headerlink" title="1.4 现代密码学的基本原则"></a>1.4 现代密码学的基本原则</h2><p>形式化定义是困难的。<br>一个比较完整的定义：攻击者不能从密文中计算关于明文的任何函数（语义和统计规律？）。<br>通用的安全定义：有特定能力的攻击者不能完成特定的攻破。<br>现代研究中常用的规约方法。考虑假设$X$为真，可以构建系统$Y$为安全。通过攻破系统$Y$，可以证明假设$X$不为真。</p><h1 id="2-完善保密加密"><a href="#2-完善保密加密" class="headerlink" title="2 完善保密加密"></a>2 完善保密加密</h1><h2 id="2-1-定义和基本属性"><a href="#2-1-定义和基本属性" class="headerlink" title="2.1 定义和基本属性"></a>2.1 定义和基本属性</h2><p>注意对一个明文，加密算法可能给出多种密文。（单射。）<br>完善保密加密的定义：攻击者接收密文前后，所知明文发送的概率不变，也即密文没有泄露任何有关明文在明文空间中选取的信息。<br>即$P[M=m|C=c]=P[M=m]$（后验概率等于先验概率）。一个等价表述是$P[C=c|M=m]=P[C=c]$（称完美不可区分性）。<br>思想实验。加密者从两个明文中选出一个，令无任何能力限制的攻击者猜测密文对应的明文。如概率收敛到$\frac{1}{2}$，则称敌手不可区分性。与上述两个概念等价。</p><h2 id="2-2-一次一密（Vernam加密）"><a href="#2-2-一次一密（Vernam加密）" class="headerlink" title="2.2 一次一密（Vernam加密）"></a>2.2 一次一密（Vernam加密）</h2><p>生成密钥$k$为某长度的01串。$m$为同长度的01串，$c=m\oplus k$。该加密方案是完善保密加密的。<br>缺陷一。密钥、明文、密文为相同长度，以至于首先必须安全存储密钥。<br>缺陷二。一个密钥只能使用一次，否则（举例来说）就能够得出两个明文间的异或关系。</p><h2 id="2-3-完善保密的局限"><a href="#2-3-完善保密的局限" class="headerlink" title="2.3 完善保密的局限"></a>2.3 完善保密的局限</h2><p>完善保密加密最基本的需求是密钥空间大于等于明文空间。<br>证明。采用反证。如若密钥空间小于明文空间，给定密文$c$，其可能明文有$|\mathbb{K}|&lt;|\mathbb{M}|$个,则必定存在$m \in \mathbb{M}$使$P[M=m|C=c]=0≠P[M=m]$。</p><h2 id="2-4-香农定理"><a href="#2-4-香农定理" class="headerlink" title="2.4* 香农定理"></a>2.4* 香农定理</h2><p>香农定理。对一个$|\mathbb{K}|=|\mathbb{M}|=|\mathbb{C}|$的加密方案，当且仅当以下条件成立，为完善保密加密。</p><ol><li>$Gen()$产生任何密钥概率相等。</li><li>对任意$m$和$c$，存在唯一$k$为正确密钥。</li></ol><p>证明。充分性。对任意$c$，所有$m \in \mathbb{M}$都取到一个$k \in \mathbb{k}$。当密钥概率相等，易知$P[M=m|C=c]=P[M=m]$。<br>必要性。完善保密加密下，对任意$m$，所有$k \in \mathbb{K}$一一对应所有$c \in \mathbb{C}$（否则不能双射，显然违反等概率）。此时对所有$k$的选取概率必然有$P[K=k]=P[C=c]=P[C=c|M=m]$。</p><h2 id="2-5-小结"><a href="#2-5-小结" class="headerlink" title="2.5 小结"></a>2.5 小结</h2><h1 id="3-对称密钥加密以及伪随机性"><a href="#3-对称密钥加密以及伪随机性" class="headerlink" title="3 对称密钥加密以及伪随机性"></a>3 对称密钥加密以及伪随机性</h1>]]></content>
     
@@ -30,9 +30,7 @@
     
     
     
-    <category term="读书笔记" scheme="https://zahrinas.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="学术学习" scheme="https://zahrinas.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%AD%A6%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学术学习" scheme="https://zahrinas.github.io/categories/%E5%AD%A6%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
     
     
   </entry>
@@ -42,7 +40,7 @@
     <link href="https://zahrinas.github.io/2023/10/19/shuli-luoji-notes/"/>
     <id>https://zahrinas.github.io/2023/10/19/shuli-luoji-notes/</id>
     <published>2023-10-19T13:36:28.000Z</published>
-    <updated>2023-10-24T15:50:08.975Z</updated>
+    <updated>2023-10-24T15:54:27.294Z</updated>
     
     <content type="html"><![CDATA[<p>by 汪芳庭<br>主用第二版<br><span id="more"></span></p><h1 id="0-预备知识"><a href="#0-预备知识" class="headerlink" title="0 预备知识"></a>0 预备知识</h1><h1 id="0-1-集论初等概念"><a href="#0-1-集论初等概念" class="headerlink" title="0.1 集论初等概念"></a>0.1 集论初等概念</h1><p>一些以前不常见到的记号。幂集$\mathcal{P}(A)={a|a \subseteq A}$。积集$A \times B={(a, b)|a \in A, b \in B}$，规定$A^0=\emptyset$。<br>如若$R \subseteq A \times B$，称$R$是$A$到$B$的关系。若$R \subseteq A^n$，称$R$是$A$上的$n$元关系。一元关系即子集。<br>等价类满足自反、对称和传递性。$a$与$b$等价记作$a \sim b$。$a$在某等价关系上形成的等价类记作$[a]$。对$A$上的等价关系$R$，所有$R$等价类的集称为商集，记作$A/R$。<br>对一个映射关系$f:X \rightarrow Y$，若有$(x_0,y_0) \in f$，则$y_0$称为$x_0$的象，反过来称为原象，写作$x_0 \mapsto y_0$或$y_0=f(x_0)$。<br>$f:A^n \rightarrow A$称为$A$上的$n$元运算。</p><h1 id="0-2-Peano自然数公理"><a href="#0-2-Peano自然数公理" class="headerlink" title="0.2 Peano自然数公理"></a>0.2 Peano自然数公理</h1><p>皮亚诺自然数公理：</p><ol><li>$0$是自然数。</li><li>任何自然数有唯一后继。</li><li>任何自然数后继不为$0$。</li><li>不同自然数的后继不同。</li><li>当$0 \in M$，并且$x \in M$时$x$的后继$x’ \in M$，则$M$是自然数集。</li></ol><p>把$0$的后继记为$1$，以此类推，即是一般意义上的自然数集。<br>$f: N^k \rightarrow N$称为$k$元数论函数。<br>已知$k$元数论函数$g$和$k+2$元数论函数$h$，当<script type="math/tex">f(n_1,...,n_k,0)=g(n_1,...,n_k),$$$$f(n_1,...,n_k,n+1)=h(n_1,...,n_k,n,f(n)),</script>此时唯一存在$k+1$元数论函数$f$是递归函数。<br>当$k=0$可做如下定义。已知常数$m$和二元数论函数$h$，当$f(0)=m$，$f(n+1)=h(n,f(n))$，称f是由$m$和$h$递归定义的函数。</p><h1 id="0-3-可数集"><a href="#0-3-可数集" class="headerlink" title="0.3 可数集"></a>0.3 可数集</h1><p>由可数集的元素构造的有序有限元组的集也是可数集。证明考虑映射到素数无穷。</p><h1 id="1-命题逻辑"><a href="#1-命题逻辑" class="headerlink" title="1 命题逻辑"></a>1 命题逻辑</h1><h1 id="1-1-命题联结词与真值表"><a href="#1-1-命题联结词与真值表" class="headerlink" title="1.1 命题联结词与真值表"></a>1.1 命题联结词与真值表</h1>]]></content>
     
@@ -51,9 +49,7 @@
     
     
     
-    <category term="读书笔记" scheme="https://zahrinas.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="学术学习" scheme="https://zahrinas.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%AD%A6%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学术学习" scheme="https://zahrinas.github.io/categories/%E5%AD%A6%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
     
     
   </entry>
