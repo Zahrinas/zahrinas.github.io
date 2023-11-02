@@ -17,16 +17,20 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Blog Zahrinii</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Blog Zahrinii">
-<meta property="og:url" content="https://zahrinas.github.io/index.html">
+  <title>decision procedures notes | Blog Zahrinii</title>
+  <meta name="description" content="Decision Procedures: An Algorithmic Point of Viewby Daniel Kroening &amp; Ofer Strichman第二版英文版">
+<meta property="og:type" content="article">
+<meta property="og:title" content="decision procedures notes">
+<meta property="og:url" content="https://zahrinas.github.io/2023/11/02/decision-procedures-notes/index.html">
 <meta property="og:site_name" content="Blog Zahrinii">
+<meta property="og:description" content="Decision Procedures: An Algorithmic Point of Viewby Daniel Kroening &amp; Ofer Strichman第二版英文版">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-02T15:27:29.000Z">
+<meta property="article:modified_time" content="2023-11-02T15:28:09.192Z">
 <meta property="article:author" content="Arraeus Zarius">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://zahrinas.github.io/index.html">
+  <link rel="canonical" href="https://zahrinas.github.io/2023/11/02/decision-procedures-notes/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Blog Zahrinii" type="application/atom+xml">
   
@@ -36,6 +40,8 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
   
   
   
@@ -300,121 +306,125 @@
 </aside>
 
   
-  <main class="main" role="main">
   
-  <div class="content article-list">
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-decision-procedures-notes" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+    <div class="article-header">
+      
+        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/02/decision-procedures-notes/">decision procedures notes</a>
+    <h1 class="article-title" itemprop="name">
+      decision procedures notes
     </h1>
   
 
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>Decision Procedures: An Algorithmic Point of View<br>by Daniel Kroening &amp; Ofer Strichman<br>第二版英文版<br>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
+      
+      <div class="article-meta">
+        <span class="article-date">
     <i class="icon icon-calendar-check"></i>
 	<a href="/2023/11/02/decision-procedures-notes/" class="article-date">
-	  <time datetime="2023-11-02T15:27:29.000Z" itemprop="datePublished">11月 2</time>
+	  <time datetime="2023-11-02T15:27:29.000Z" itemprop="datePublished">2023-11-02</time>
 	</a>
 </span>
-    
+        
   <span class="article-category">
     <i class="icon icon-folder"></i>
     <a class="article-category-link" href="/categories/%E5%AD%A6%E6%9C%AF%E5%AD%A6%E4%B9%A0/">学术学习</a>
   </span>
 
-    
+        
 
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/11/02/decision-procedures-notes/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
+        
 
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/11/02/decision-procedures-notes/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>Decision Procedures: An Algorithmic Point of View<br>by Daniel Kroening &amp; Ofer Strichman<br>第二版英文版<br><span id="more"></span></p>
+<h1 id="1-Introduction-and-Basic-Concepts"><a href="#1-Introduction-and-Basic-Concepts" class="headerlink" title="1 Introduction and Basic Concepts"></a>1 Introduction and Basic Concepts</h1><h2 id="1-1-Two-Approaches-to-Formal-Reasoning"><a href="#1-1-Two-Approaches-to-Formal-Reasoning" class="headerlink" title="1.1 Two Approaches to Formal Reasoning"></a>1.1 Two Approaches to Formal Reasoning</h2><p>两种解决可行性问题的常用途径：证明论proof-theoretic（通过严格的推理）、模型论model-theoretic（通过枚举有限解）。</p>
+<h3 id="1-1-1-Proof-by-Deduction"><a href="#1-1-1-Proof-by-Deduction" class="headerlink" title="1.1.1 Proof by Deduction"></a>1.1.1 Proof by Deduction</h3><h3 id="1-1-2-Proof-by-Enumeration"><a href="#1-1-2-Proof-by-Enumeration" class="headerlink" title="1.1.2 Proof by Enumeration"></a>1.1.2 Proof by Enumeration</h3><h3 id="1-1-3-Deduction-and-Enumeration"><a href="#1-1-3-Deduction-and-Enumeration" class="headerlink" title="1.1.3 Deduction and Enumeration"></a>1.1.3 Deduction and Enumeration</h3><h2 id="1-2-Basic-Definitions"><a href="#1-2-Basic-Definitions" class="headerlink" title="1.2 Basic Definitions"></a>1.2 Basic Definitions</h2><p>过程的可靠性soundness：只有当其返回永真结果时，输入公式永真。<br>过程的完备性completeness：其必然停机，并且对永真式返回永真结果。<br>如果过程既有可靠性又有完备性，称为决策过程decision procedure。<br>称一个理论是可决定decidable的，当且仅当该理论存在一个决策过程。</p>
+<h2 id="1-3-Normal-Forms-and-Some-of-Their-Properties"><a href="#1-3-Normal-Forms-and-Some-of-Their-Properties" class="headerlink" title="1.3 Normal Forms and Some of Their Properties"></a>1.3 Normal Forms and Some of Their Properties</h2><p>两个公式是等价可满足equisatisable的，意即它们都是可满足的，或都是不可满足的。这个概念将被用在范式转换中。<br>否定范式negation normal form：只含$\neg, \wedge, \vee$联结词，且只在原子公式上应用$\neg$。<br>原子公式及其否定被称为字面值literal，并分别对应正positive和负negative。<br>在NNF公式中，叠加的后一性质也称为原子公式的极性polarity或相位phase，如$\neg \neg \neg x_1$是负的。<br>NNF的单调性：增加一个赋值所满足的字面值数量，公式的可满足性仍然保持（但并不保持不可满足性）。<br>析取范式disjunctive normal form和合取范式conjunctive normal form都是NNF。<br>Tseitin编码：在公式中添加线性个数的原子公式和约束，其中每个原子公式等价于一个联结词的结果，就能在线性范围内把公式写成CNF。等价关系可以只写成保持原子公式蕴含联结词结果即可。<br>一些对Tseitin的优化。连续的合取或析取联结词只需要写成一个原子公式；由于单调性，有一些子句可以安全地被忽略。</p>
+<h2 id="1-4-The-Theoretical-Point-of-View"><a href="#1-4-The-Theoretical-Point-of-View" class="headerlink" title="1.4 The Theoretical Point of View"></a>1.4 The Theoretical Point of View</h2><p>非逻辑符号（常量，函数）的集合称为签名signature。<br>没有自由变量的公式称为句sentence。<br>限制逻辑联结词的理论被称为理论的片fragment。</p>
+<h3 id="1-4-1-The-Problem-We-Solve"><a href="#1-4-1-The-Problem-We-Solve" class="headerlink" title="1.4.1 The Problem We Solve"></a>1.4.1 The Problem We Solve</h3><h3 id="1-4-2-Our-Presentation-of-Theories"><a href="#1-4-2-Our-Presentation-of-Theories" class="headerlink" title="1.4.2 Our Presentation of Theories"></a>1.4.2 Our Presentation of Theories</h3><h2 id="1-5-Expressiveness-vs-Decidability"><a href="#1-5-Expressiveness-vs-Decidability" class="headerlink" title="1.5 Expressiveness vs. Decidability"></a>1.5 Expressiveness vs. Decidability</h2><p>理论可以被认为是语言language，公式即是其词。<br>称$A$理论比$B$理论表达力强more expressive，若$B$理论的所有公式均能由$A$理论定义，但$A$理论中存在公式不能由$B$理论定义，记作$B \prec A$。</p>
+<h2 id="1-6-Boolean-Structure-in-Decision-Problems"><a href="#1-6-Boolean-Structure-in-Decision-Problems" class="headerlink" title="1.6 Boolean Structure in Decision Problems"></a>1.6 Boolean Structure in Decision Problems</h2><h2 id="1-7-Logic-as-a-Modeling-Language"><a href="#1-7-Logic-as-a-Modeling-Language" class="headerlink" title="1.7 Logic as a Modeling Language"></a>1.7 Logic as a Modeling Language</h2><h1 id="2-Decision-Procedures-for-Propositional-Logic"><a href="#2-Decision-Procedures-for-Propositional-Logic" class="headerlink" title="2 Decision Procedures for Propositional Logic"></a>2 Decision Procedures for Propositional Logic</h1><h2 id="2-1-Propositional-Logic"><a href="#2-1-Propositional-Logic" class="headerlink" title="2.1 Propositional Logic"></a>2.1 Propositional Logic</h2><h3 id="2-1-1-Motivation"><a href="#2-1-1-Motivation" class="headerlink" title="2.1.1 Motivation"></a>2.1.1 Motivation</h3>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
     
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://zahrinas.github.io/2023/11/02/decision-procedures-notes/" title="decision procedures notes" target="_blank" rel="external">https://zahrinas.github.io/2023/11/02/decision-procedures-notes/</a>
+    </li>
     
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/20/introduction-to-modern-cryptography-notes/">Introduction to Modern Cryptography - Notes</a>
-    </h1>
-  
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
 
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Zahrinas" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Zahrinas" target="_blank"><span class="text-dark">Zahrinas</span><small class="ml-1x">student</small></a></h3>
+        <div></div>
+      </div>
+    </figure>
   </div>
+</div>
+
+
+    </div>
+  </article>
   
-  <div class="article-entry text-muted" itemprop="description">
-    <p>Introduction to Modern Cryptography<br>by Jonathan Katz &amp; Yehuda Lindell<br>主用第二版中文版，并参第三版英文版<br>
-  </div>
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2023/10/20/introduction-to-modern-cryptography-notes/" class="article-date">
-	  <time datetime="2023-10-20T05:44:07.000Z" itemprop="datePublished">10月 20</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E6%9C%AF%E5%AD%A6%E4%B9%A0/">学术学习</a>
-  </span>
+</div>
 
-    
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/10/20/introduction-to-modern-cryptography-notes/#comments" class="article-comment-link">评论</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/19/shuli-luoji-notes/">数理逻辑 笔记</a>
-    </h1>
-  
-
-  </div>
-  
-  <div class="article-entry text-muted" itemprop="description">
-    <p>数理逻辑<br>by 汪芳庭<br>主用第二版<br>
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2023/10/19/shuli-luoji-notes/" class="article-date">
-	  <time datetime="2023-10-19T13:36:28.000Z" itemprop="datePublished">10月 19</time>
-	</a>
-</span>
+  <ul class="pager pull-left">
     
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E6%9C%AF%E5%AD%A6%E4%B9%A0/">学术学习</a>
-  </span>
-
     
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/10/19/shuli-luoji-notes/#comments" class="article-comment-link">评论</a></span>
+    <li class="next">
+      <a href="/2023/10/20/introduction-to-modern-cryptography-notes/" title="Introduction to Modern Cryptography - Notes"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
     
-  </p>
-</article>
-
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
     
   </div>
+  </div>
+</nav>
+  
 
-   
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -479,6 +489,33 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
    
 
 
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: '...',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
 
 
 
